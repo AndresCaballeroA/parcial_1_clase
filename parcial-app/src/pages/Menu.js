@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Carousel, Card, Container, Row, Col } from "react-bootstrap";
-import axios from "axios";
-
-const API_URL = "https://my.api.mockaroo.com/parcial.json?key=1925cd50";
+import React from "react";
+import { Carousel, Card } from "react-bootstrap";
 
 export const MenuCarousel = () => {
   return (
@@ -36,7 +33,16 @@ export const MenuCard = ({ image, title }) => {
   );
 };
 
+import React, { useEffect, useState } from "react";
+import { Carousel, Card, Container, Row, Col } from "react-bootstrap";
+import axios from "axios";
+import { useTranslation } from "react-i18next";
+import { MenuCarousel, MenuCard } from "./MenuComponents"; // o la ruta correspondiente
+
+const API_URL = "https://my.api.mockaroo.com/parcial.json?key=1925cd50";
+
 const MenuPage = () => {
+  const { t } = useTranslation();
   const [menuItems, setMenuItems] = useState([]);
 
   useEffect(() => {
@@ -54,7 +60,7 @@ const MenuPage = () => {
 
   return (
     <Container>
-      <h2 className="text-center my-4">MENU</h2>
+      <h2 className="text-center my-4">{t("menu")}</h2>
       <MenuCarousel />
       <Row className="mt-4">
         {menuItems.map((item, index) => (

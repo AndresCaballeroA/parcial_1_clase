@@ -1,31 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Carousel, Card, Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const API_URL = "https://my.api.mockaroo.com/parcial.json?key=1925cd50";
 
 export const MenuCarousel = () => {
+  const { t } = useTranslation();
   return (
     <Carousel>
       <Carousel.Item>
         <img
           className="d-block w-100"
           src="image1.jpg"
-          alt="First slide"
+          alt={t("firstSlide")}
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
           src="image2.jpg"
-          alt="Second slide"
+          alt={t("secondSlide")}
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
           src="image3.jpg"
-          alt="Second slide"
+          alt={t("thirdSlide")}
         />
       </Carousel.Item>
     </Carousel>
@@ -44,6 +46,7 @@ export const MenuCard = ({ image, title }) => {
 };
 
 const MenuPage = () => {
+  const { t } = useTranslation();
   const [menuItems, setMenuItems] = useState([]);
 
   useEffect(() => {
@@ -61,7 +64,7 @@ const MenuPage = () => {
 
   return (
     <Container>
-      <h2 className="text-center my-4">Stores</h2>
+      <h2 className="text-center my-4">{t("stores")}</h2>
       <MenuCarousel />
       <Row className="mt-4">
         {menuItems.map((item, index) => (
